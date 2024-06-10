@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>底层逻辑案例 - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="olOwOlo" /><meta name="description" content="关于产品创新 产品价值 = 新体验-旧体验-切换成本 避免高估新体验，错判什么是旧体验，以及低估切换成本 你的产品所面对的可能是一些通用产品的组合，比" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.127.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%911/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:url" content="http://localhost:1313/post/%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%911/">
+  <meta property="og:site_name" content="Even - A super concise theme for Hugo">
+  <meta property="og:title" content="底层逻辑案例">
+  <meta property="og:description" content="关于产品创新 产品价值 = 新体验-旧体验-切换成本 避免高估新体验，错判什么是旧体验，以及低估切换成本 你的产品所面对的可能是一些通用产品的组合，比">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-06-10T17:39:16+08:00">
+    <meta property="article:modified_time" content="2024-06-10T17:39:16+08:00">
+
+  <meta itemprop="name" content="底层逻辑案例">
+  <meta itemprop="description" content="关于产品创新 产品价值 = 新体验-旧体验-切换成本 避免高估新体验，错判什么是旧体验，以及低估切换成本 你的产品所面对的可能是一些通用产品的组合，比">
+  <meta itemprop="datePublished" content="2024-06-10T17:39:16+08:00">
+  <meta itemprop="dateModified" content="2024-06-10T17:39:16+08:00">
+  <meta itemprop="wordCount" content="4095">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="底层逻辑案例">
+  <meta name="twitter:description" content="关于产品创新 产品价值 = 新体验-旧体验-切换成本 避免高估新体验，错判什么是旧体验，以及低估切换成本 你的产品所面对的可能是一些通用产品的组合，比">
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">底层逻辑案例</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2024-06-10 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#关于产品创新">关于产品创新</a>
+          <ul>
+            <li><a href="#产品创新的方向">产品创新的方向</a></li>
+            <li><a href="#所谓用户诉求">所谓用户诉求</a></li>
+            <li><a href="#关于行为动机">关于行为动机</a></li>
+            <li><a href="#关于商业机会">关于商业机会</a></li>
+            <li><a href="#沟通的本质">沟通的本质</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="关于产品创新">关于产品创新</h2>
+<ol>
+<li>产品价值 = 新体验-旧体验-切换成本
+<ol>
+<li>避免高估新体验，错判什么是旧体验，以及低估切换成本</li>
+</ol>
+</li>
+<li>你的产品所面对的可能是一些通用产品的组合，比如某些特定领域缺少某些产品，别人原来的使用方式就是word+execl+微信等一些通用产品，也许你的产品组合了各种功能，但是需要但需下载一个软件，那么这个东西的切换成本可能远比你想的要高的多，你并不是在一个空旷的领域创造新产品，而是去打破原来的固有思维，这其中的切换成本比想象中要高很多</li>
+<li>一个产品创新的价值，如何去判定，你看它对人们的生活，学习，娱乐是否产生了改变，产生了怎样的改变，如果你发现这是一个不可逆的生活改变，那么它的价值自然就是无比巨大的
+<ol>
+<li>比如抖音快手的短视频以及直播，在4g时代，彻底改变了娱乐的方式</li>
+<li>比如微信公众号，改变了传媒的方式</li>
+<li>比如电子商务，改变了购物的习惯</li>
+<li>比如网约车，外卖之类的</li>
+<li>上面这些都是不可逆的，是真正的革命</li>
+</ol>
+</li>
+<li>产品创新判断还有一个重要的底层逻辑，是前瞻性必须能理解所谓的孤岛效应
+<ol>
+<li>例如互联网，移动手机，刚开始也许会没人使用，但是当用的人越来越多，其他人也会被裹挟进来，不然其他人就会自成孤岛</li>
+</ol>
+</li>
+<li>为什么人们看不到未来，因为他们没有预判到，当这种新产品，新业态覆盖率达到一定比例的时候，会把所有人裹挟进来，凡是没有裹挟进来的就会成为汪洋大海里的孤岛，孤立无援，但很多人，在覆盖率很低的时候，根本预判不到这种趋势
+<ol>
+<li>例如电动车，当充电桩铺天盖地时，电动车的优势会越来越高，坚持油车就会成为一种孤岛</li>
+</ol>
+</li>
+</ol>
+<h3 id="产品创新的方向">产品创新的方向</h3>
+<ol>
+<li>提高效率，提高信息获取效率，提高知识获取效率，提高沟通效率，提高用户处理信息的效率</li>
+<li>成本降低，降低用户操作实现的成本，包括金钱费用成本，沟通成本学习和理解成本，对于不同阶层的人来说，时间成本的概念完全不同</li>
+<li>实现更多，帮助用户触达未知的领域，帮助用户解锁未想到的服务，帮助用户攻克无法克服的障碍</li>
+<li>关于产品创新，能够正确理解新体验的优势，并正确评估旧体验的优势，以及对切换成本有清晰的认知，才能理解产品创新的价值，而从具体方向来说，效率提升，成本下降，和实现更多，是三个值得思考的方向</li>
+</ol>
+<h3 id="所谓用户诉求">所谓用户诉求</h3>
+<h4 id="达成性诉求">达成性诉求</h4>
+<ol>
+<li>理解人的诉求，是建立同理心，理解用户行动为动机的前提。第一部分是如何理解所谓用户诉求，第二部分是如何有效拆解行为动机</li>
+<li>用户期望实现怎样的能力，用户期望的操作目标</li>
+<li>一定要搞清楚，用户真正的达成性诉求是什么，这是一切优化工作的前提基础，没有这个基础，所有其他的毫无意义。</li>
+<li>你希望设计一个用户喜欢的产品，你去谈商务合作，你希望和某些关键的人达成共识，你都需要先了解对方的达成性诉求，对方要完成怎样的操作，要实现怎样的目标，要获得怎样的成果</li>
+<li>尊重不同用户的不同选择，同样的一件事情，不同的人的目标可能是完全不同的</li>
+</ol>
+<h4 id="物质满足诉求">物质满足诉求</h4>
+<ol>
+<li>马斯洛五层模型： 生理需求-安全需求-归属需求-尊重需求-自我实现</li>
+<li>基本误区：物质生产极大丰富，可以满足人们不断增长的物质需求，这个理论从骨子里都是错误的，当你拥有基本的满足后，你就会往更高层的满足
+<ol>
+<li>只要需求不断向上，稀缺就永远存在</li>
+<li>满足需求是无止境的，只有降低欲望，才能降低满足需求的门槛</li>
+<li>欲壑难填，只要不遏制欲望，再强大的生产能力和物质丰富度，永远避免不了稀缺性的问题，永远存在无法满足的缺口</li>
+</ol>
+</li>
+</ol>
+<h4 id="心理诉求">心理诉求</h4>
+<h4 id="人们会有怎样的心理诉求">人们会有怎样的心理诉求</h4>
+<ol>
+<li>得到安全感</li>
+<li>得到认可和尊重</li>
+<li>得到谅解和宽恕</li>
+<li>感受友好和亲密</li>
+<li>满足幻想和期待</li>
+</ol>
+<h4 id="安全感的背景来自于各种焦虑对收入持续性的焦虑对伴侣忠诚度的焦虑对子女发展的焦虑对维持生计的焦虑对社交关系的焦虑">安全感的背景来自于各种焦虑，对收入持续性的焦虑，对伴侣忠诚度的焦虑，对子女发展的焦虑，对维持生计的焦虑，对社交关系的焦虑</h4>
+<ol>
+<li><strong>有些人过于胆怯，容易再现实挫折中逃避，希望缩回到自以为安全的角落，其实如果不够勇敢，又哪里有所谓安全的角落</strong></li>
+<li>企业先通过资金，福利来给员工提供安全感，然后再通过绩效考核，末尾淘汰来制造不安全感来刺激员工前进</li>
+<li>一般来说，如果想要获取信任好感，需要努力营造安全感氛围，但是在有时候，为了挖掘潜力，促进对方前进，需要刻意降低安全感，制造压力促使对方前进。（这里搞不好可能就会被当作pua。</li>
+</ol>
+<h4 id="认可和尊重">认可和尊重</h4>
+<ol>
+<li>每个人都希望得到认可和尊重，每个人都希望自己的才能被赏识，自己的创造被肯定，无一例外
+<ol>
+<li>注意认可和尊重是相互的，你希望对方认可和尊重你，那么你是否付出了对对方的认可和尊重</li>
+<li>如果是管理者，要学会用这种方法降低员工成本，如果是员工，要明白口惠而实不至</li>
+</ol>
+</li>
+<li>过度追求面子是中国传统文化的陋习之一，扭曲了认可和尊重的含义，扭曲了自我价值的含义。破局之路只有多读书，让自己更优秀，看到更上面的世界才能从恶俗中挣脱出来
+<ol>
+<li>普通人会从集体中寻找安全，寻找面子，<strong>当个体足够优秀的时候，对集体这个标签就会淡然，不会讲自己的尊严和安全感维系在集体这个标签上</strong></li>
+<li>当你理解自我价值的时候，你对外部的尊重外部的认可，就没有那么关切，没那么依赖，你也会维系集体荣誉，但你知道你是集体强大的真正贡献者，你维系的是你自己的成就</li>
+</ol>
+</li>
+<li>人其实知道自己犯了错误，害怕不被谅解，害怕不被宽恕，从而犯更多错误，来试图掩盖最初的错误，有时候小问题就会衍生成为巨大的不可弥补的问题
+<ol>
+<li>我们对于小的过失，无意的过错，给予足够的谅解和宽恕</li>
+<li>要求自己的时候能不能做到不那么依赖别人的谅解和宽恕，用于认错，用于担当，用于承认自己的愚蠢和无知，才能让自己变得更强大</li>
+</ol>
+</li>
+<li>感受友好和亲近
+<ol>
+<li>人是社会性动物，人们渴望友好，渴望被亲近</li>
+<li>注意友好与亲近的尺度是什么</li>
+<li>如果发现有些人不喜欢你，尝试过后可以放弃，只要不在乎，也没有那么可怕</li>
+</ol>
+</li>
+<li>心理诉求，第一是看我们如何面对别人的诉求，第二是反思我们自己的心理诉求</li>
+<li>保持警惕是有必要的，但保持警惕的同时，也请保持礼貌
+<ol>
+<li>如果对方给予你的是友好表达，拒绝是权利，礼貌拒绝是品德</li>
+<li>社会信任度低，其实和每个人的思维模式行为习惯有关</li>
+</ol>
+</li>
+</ol>
+<h3 id="关于行为动机">关于行为动机</h3>
+<ol>
+<li>每个人做决策都是有行为动机的，如果能够迎合别人的动机，就可以在这个过程中占据主导的地位</li>
+</ol>
+<h4 id="刚需">刚需</h4>
+<ol>
+<li>刚需就是对方真正需要的</li>
+<li>但是现实并不是那么简单，人们往往在刚需上加了太多其他的干扰判断的因素
+<ol>
+<li>我们需要甄别什么是真刚需，什么事伪刚需
+为理想</li>
+</ol>
+</li>
+<li>怀旧也可以认为是一种理想追求，希望重温曾经的美好时光，希望重回年轻时的快乐</li>
+</ol>
+<h4 id="非理性">非理性</h4>
+<ol>
+<li>很多时候，我们做经济学假设，做行为假设，都是假设对方时理性人，能够做出最合乎理性和逻辑的决策，但是很遗憾，现实中，非理性的决策时非常常见的，这种通常被成为感性冲动</li>
+<li><strong>非理性的行为很难预估，一般而言，非理性的行为往往来源于缺乏自信，缺乏情绪控制能力，以及长期依赖缺乏自主思考的习惯</strong></li>
+<li>在信息灌输的今天如果年轻人习惯于跟随某些引导而不是自主思考，自主判断，就很容易做出非理性的行为</li>
+<li>当然非理性的行为动机在绝大多数的情况下，依然可以用对应的心理诉求来解释比如缺乏安全感，缺乏被尊重和认可的感觉</li>
+<li>缺乏自信是一个普遍的现象，在很多场合下，越对国家有信心，越是自我缺乏自信的一种表现，这就是自我前途一片渺茫，却认定国家前途无限大号，只有这样才可以被国家拯救，人们有时候需要考幻想来维持生存与发展</li>
+<li>理想和幻想的区别：所谓理想是你可以依靠自己的努力，依靠自己的进步来实现的目标，所谓幻想是你必须依靠第三方幸运女神的眷顾，才可以实现的目标</li>
+</ol>
+<h3 id="关于商业机会">关于商业机会</h3>
+<ol>
+<li>一切皆交易，一切皆博弈</li>
+<li>一些产生商业的基本条件，就是存在某种不平衡，所以会带来新型交易的空间</li>
+</ol>
+<h4 id="信息差">信息差</h4>
+<ol>
+<li>谁有货源谁有诉求这就是信息差，能够对接这个信息差就构成了商业的基础条件</li>
+<li>很多人说自己有资源，很多人说自己有渠道，甄别的成本非常高，所以人们实际上往往需要在一些可信的平台，通过可信的中间人进行交易</li>
+<li>信息中介很容易被淘汰，但是信用中介长久以来都是有价值的</li>
+<li>中国很多小企业就是靠人力成本差，赚一些辛苦钱，辛苦的生存着，这也是中国服务成本低的主要原因</li>
+</ol>
+<h4 id="体验差">体验差</h4>
+<ol>
+<li>滴滴和uber的崛起就是体验差的典型范例</li>
+<li>高收入高净值的人群往往乐于为体验差付出更高的成本，所以苹果手机一上来走的就是高端路线，商业很现实，你只能卖给愿意为体验差付费的人群，不要试图满足所有消费者</li>
+</ol>
+<h4 id="如何拆解成功案例">如何拆解成功案例</h4>
+<ol>
+<li>如果想要做成一件具有商业价值的事情，那么一个非常有意义的准备工作，就是拆解这个领域成功的案例并深度理解之所以成功的逻辑</li>
+<li>只有真正努力拆解，才能学到别人的精髓，并用在自己的成长道路上</li>
+<li>路径拆解
+<ol>
+<li>尽可能了解对方流量的来源，对方的来路，以及后续商业化的途径，试图完整浮现对方商业化路径</li>
+<li>举例：一个不错的视频号路径分析
+<ol>
+<li>第一用户哪里来的，知乎，小红书，私域流量，早起的公众号读者，微信搜索榜单？ 先有个这样的概念，然后做出结构，酌情找机会填充，并且尽可能搞明白不同渠道的用户大概占比是多少。</li>
+<li>第二视频号的内容吧制作怎么来的，工作室原创，搬运剪辑版权合作？</li>
+<li>第三视频号的商业化目标是什么，加微信商业化路径？微信群？</li>
+<li>对方的商业目标用户从哪里来的，对方提供的商业内容或产品从哪里来的，商业转化目标是什么</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>元素拆解
+<ol>
+<li>对关键路径节点上的内容进行元素拆解</li>
+<li>一个成功的商品页是怎么吸引用户转化的，前面的封面是怎么设计的，产品的价格是怎么设计的，产品描述部分，使用了哪些技巧。最后评论的回复怎么做，差评回复怎么做</li>
+</ol>
+</li>
+</ol>
+<h4 id="动机和诉求拆解">动机和诉求拆解</h4>
+<ol>
+<li>看到一个成功案例，先通过流程拆解，然后对关键节点做元素拆解，并结合动机和诉求拆解，才能更好的理解别人的成功带你，把握关键要点，从而学到精髓</li>
+</ol>
+<h4 id="延展归纳">延展归纳</h4>
+<ol>
+<li>将认知延展，将拆解能力延展，将用户行为动机和诉求的整理归纳延展就能看到更多领域，更多案例的可能性</li>
+</ol>
+<h3 id="沟通的本质">沟通的本质</h3>
+<ol>
+<li>沟通的三个目标
+<ol>
+<li>让对方正确清晰的了解我表达的意图</li>
+<li>让对方相信我所说事物以及观点，并对我产生足够的信任</li>
+<li>让对方愿意按照我的建议，或者按照我的目标进行相应的行动或配合</li>
+<li>其核心一点就是共情力，也就是同理心</li>
+</ol>
+</li>
+<li>博弈的过程需要理解双方的诉求，并寻求其中的平衡，而不是单方面的喊正确，很多时候，单方面的喊正确只会让弱势方的处境更为糟糕</li>
+<li>尊重人性尊重市场，利用博弈来主导市场行为，强调市场效率，是我们思考的一个原则</li>
+<li><strong>一切皆博弈，劳资本身也是博弈，碳排放也是博弈，用博弈的思想去思考，不要单方面追求所谓正确，要寻求共赢之路</strong></li>
+<li>直觉中的对与错，往往是预设立场，劳工阶级天然正确，资本阶级天然错误，这种有一个算一个都是傻逼</li>
+</ol>
+<h4 id="如果对同一事物定义有分歧如何清晰平衡地沟通工作">如果对同一事物定义有分歧，如何清晰平衡地沟通工作</h4>
+<ul>
+<li>第一步，退回基础共识，第二步寻求信任基础，第三步找共赢点</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">olOwOlo</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2024-06-10
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>olOwOlo</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
