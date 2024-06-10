@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/post/</link>
+    <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 10 Jun 2024 17:39:16 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>底层逻辑案例</title>
+      <link>http://localhost:1313/post/%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91%E6%A1%88%E4%BE%8B/</link>
+      <pubDate>Mon, 10 Jun 2024 17:39:16 +0800</pubDate>
+      <guid>http://localhost:1313/post/%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91%E6%A1%88%E4%BE%8B/</guid>
+      <description>关于产品创新 产品价值 = 新体验-旧体验-切换成本 避免高估新体验，错判什么是旧体验，以及低估切换成本 你的产品所面对的可能是一些通用产品的组合，比</description>
+    </item>
+  </channel>
+</rss>
