@@ -1,10 +1,25 @@
 ---
+date: 2024-06-10
 tags:
-  - 总结
-  - 抓包
+  - "#课外知识"
   - 课外知识
+title: plantegg 星球启示录 (1) (MySql抓包实验)
+slug: 18:38
+share: false
+canonicalURL: 
+keywords:
+  - "#抓包"
+description: 
+series: 系列
+lastmod: 
+lang: cn
+cover:
+  image: ""
+author: 
+dir: post
 ---
-#总结 #抓包 #课外知识
+
+
 1. 通过Java和MySQL直连抓包测试, 新学到了一些知识点
  - 基于TShark可以直接在终端抓包并且显示, 这里可以方便的看到ip, port, 甚至sql语句  
  - 当最后出现连接断开时，看FIN ACK 这个包是从哪个端口发出来就知道是Client端的问题还是Server的问题  
